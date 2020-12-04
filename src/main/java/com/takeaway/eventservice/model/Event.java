@@ -17,13 +17,13 @@ public class Event implements Comparable<Event>{
     private UUID uuid;
 
     @NotNull
-    UUID employeeUuid;
+    private UUID employeeUuid;
 
     @NotNull
-    EventType eventType;
+    private EventType eventType;
 
     @NotNull
-    LocalDate creationDate;
+    private LocalDate creationDate;
 
     public UUID getEmployeeUuid() {
         return employeeUuid;

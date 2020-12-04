@@ -21,37 +21,32 @@ import java.util.UUID;
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.SpringCodegen", date = "2020-12-04T10:09:05.546Z")
 
 @Controller
-public class EventsApiController implements EventsApi {
+public class EventApiController implements EventApi {
 
     @Autowired
     EventBizService eventBizService;
 
-    private static final Logger log = LoggerFactory.getLogger(EventsApiController.class);
+    private static final Logger log = LoggerFactory.getLogger(EventApiController.class);
 
     private final ObjectMapper objectMapper;
 
     private final HttpServletRequest request;
 
     @Autowired
-    public EventsApiController(ObjectMapper objectMapper, HttpServletRequest request) {
+    public EventApiController(ObjectMapper objectMapper, HttpServletRequest request) {
         this.objectMapper = objectMapper;
         this.request = request;
     }
 
     public ResponseEntity<Events> getEventsByEmployeeUuid(@ApiParam(value = "UUID of employee to return events",required=true) @PathVariable("employeeUuid") String employeeUuid) {
-
-        String accept = request.getHeader("Accept");
-        if (accept != null && accept.contains("application/json")) {
-            try {
-                List<Event> events = eventBizService.findAllByEmployeeUuid(UUID.fromString(employeeUuid));
-                String content = objectMapper.writeValueAsString(events);
-                return new ResponseEntity<Events>(objectMapper.readValue(content, Events.class), HttpStatus.OK);
-            } catch (IOException e) {
-                log.error("Couldn't serialize response for content type application/json", e);
-                return new ResponseEntity<Events>(HttpStatus.INTERNAL_SERVER_ERROR);
-            }
+        try {
+            List<Event> events = eventBizService.findAllByEmployeeUuid(UUID.fromString(employeeUuid));
+            String content = objectMapper.writeValueAsString(events);
+            return new ResponseEntity<Events>(objectMapper.readValue(content, Events.class), HttpStatus.OK);
+        } catch (IOException e) {
+            log.error("Couldn't serialize response for content type application/json", e);
+            return new ResponseEntity<Events>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<Events>(HttpStatus.UNSUPPORTED_MEDIA_TYPE);
     }
 
 }

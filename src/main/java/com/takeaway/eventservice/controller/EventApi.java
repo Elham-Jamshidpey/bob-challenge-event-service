@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 @Api(value = "events", description = "the events API")
 @RequestMapping(value = "/v1")
-public interface EventsApi {
+public interface EventApi {
 
     @ApiOperation(value = "Find all Events by Employee UUID", nickname = "getEventsByEmployeeUuid", notes = "Returns All Events", response = Events.class, tags={ "event", })
     @ApiResponses(value = { 
