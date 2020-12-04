@@ -1,5 +1,7 @@
 package com.takeaway.eventservice.model;
 
+import com.takeaway.eventservice.EventType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,17 +20,10 @@ public class Event implements Comparable<Event>{
     UUID employeeUuid;
 
     @NotNull
-    String action;
+    EventType eventType;
 
+    @NotNull
     LocalDate creationDate;
-
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
 
     public UUID getEmployeeUuid() {
         return employeeUuid;
@@ -38,12 +33,12 @@ public class Event implements Comparable<Event>{
         this.employeeUuid = employeeUuid;
     }
 
-    public String getAction() {
-        return action;
+    public EventType getEventType() {
+        return eventType;
     }
 
-    public void setAction(String action) {
-        this.action = action;
+    public void setEventType(EventType eventType) {
+        this.eventType = eventType;
     }
 
     public LocalDate getCreationDate() {
