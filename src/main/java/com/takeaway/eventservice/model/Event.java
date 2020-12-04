@@ -1,7 +1,5 @@
 package com.takeaway.eventservice.model;
 
-import com.takeaway.eventservice.EventType;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;

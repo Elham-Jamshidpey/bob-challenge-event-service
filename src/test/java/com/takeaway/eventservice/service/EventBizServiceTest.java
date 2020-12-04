@@ -1,6 +1,6 @@
 package com.takeaway.eventservice.service;
 
-import com.takeaway.eventservice.EventType;
+import com.takeaway.eventservice.model.EventType;
 import com.takeaway.eventservice.model.Event;
 import org.junit.Before;
 import org.junit.Test;

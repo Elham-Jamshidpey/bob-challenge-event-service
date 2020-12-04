@@ -1,6 +1,6 @@
 package com.takeaway.eventservice.kafka;
 
-import com.takeaway.eventservice.EventType;
+import com.takeaway.eventservice.model.EventType;
 import com.takeaway.eventservice.model.Event;
 import com.takeaway.eventservice.service.EventBizService;
 import org.slf4j.Logger;
@@ -23,30 +23,30 @@ public class EmployeeEventConsumer {
     @KafkaListener(topics = "CREATE", groupId = "employee_consumer")
     public void consumeCreateEmployee(String message) {
         try {
-            log.info(String.format("Consumed message -> %s", message));
+            log.debug(String.format("Consumed message -> %s", message));
             eventBizService.create(initializeEvent(message, EventType.CREATE));
         } catch (Exception e) {
-            log.info("*** Consuming failed for CREATE ***"+ e.getMessage());
+            log.debug("*** Consuming failed for CREATE ***"+ e.getMessage());
         }
     }
 
     @KafkaListener(topics = "UPDATE", groupId = "employee_consumer")
     public void consumeUpdateEmployee(String message) {
         try {
-            log.info(String.format("Consumed message -> %s", message));
+            log.debug(String.format("Consumed message -> %s", message));
             eventBizService.create(initializeEvent(message, EventType.UPDATE));
         } catch (Exception e) {
-            log.info("*** Consuming failed for UPDATE***"+ e.getMessage());
+            log.debug("*** Consuming failed for UPDATE***"+ e.getMessage());
         }
     }
 
     @KafkaListener(topics = "DELETE", groupId = "employee_consumer")
     public void consumeDeleteEmployee(String message) {
         try {
-            log.info(String.format("Consumed message -> %s", message));
+            log.debug(String.format("Consumed message -> %s", message));
             eventBizService.create(initializeEvent(message, EventType.DELETE));
         } catch (Exception e) {
-            log.info("*** Consuming failed for DELETE ***"+ e.getMessage());
+            log.debug("*** Consuming failed for DELETE ***"+ e.getMessage());
         }
     }
 

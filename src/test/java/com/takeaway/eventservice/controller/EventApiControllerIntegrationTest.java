@@ -1,7 +1,7 @@
 package com.takeaway.eventservice.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.takeaway.eventservice.EventType;
+import com.takeaway.eventservice.model.EventType;
 import com.takeaway.eventservice.model.Event;
 import com.takeaway.eventservice.service.EventRepository;
 import org.junit.Before;
